@@ -1,0 +1,11 @@
+{
+  "nombre": "Miguel Perez",
+  "descripcion": "Soy una persona dinámica, disciplinada y llena de energía. Me caracterizo por buscar constantemente mi superación física a través del gimnasio y los deportes, por mi capacidad para trabajar en equipo y reaccionar con rapidez en el baloncesto, y por mi conexión con la música como el motor que me motiva y le da ritmo a mi día a día.",
+  "gustos": [
+    "música",
+    "cine",
+    "deportes",
+    "videojuegos",
+    "gym"
+  ]
+}
