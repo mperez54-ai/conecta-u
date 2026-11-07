@@ -1,0 +1,5 @@
+{
+  "nombre": "Tu Nombre",
+  "descripcion": "Escribe aquí una descripción sobre ti.",
+  "gustos": ["música", "cine", "fútbol", "programación", "viajar"]
+}

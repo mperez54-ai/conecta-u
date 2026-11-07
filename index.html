@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conecta U</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Conecta U</h1><p>Consulta perfiles de tus compañeros y descubre qué tan compatibles son sus gustos con los tuyos.</p></header>
+<main>
+  <section class="panel">
+    <h2>Mi perfil</h2>
+    <label>Nombre <input id="nombre" placeholder="Ej. Laura Gómez"></label>
+    <label>Descripción personal <textarea id="descripcion" rows="3" placeholder="Cuéntanos algo sobre ti"></textarea></label>
+    <label>Gustos o intereses <small>(mínimo 5, separados por coma)</small>
+      <textarea id="gustos" rows="2" placeholder="música, cine, fútbol, programación, viajar"></textarea></label>
+    <div class="fila">
+      <button id="btnGuardar">Generar perfil.json</button>
+      <a id="btnDescargar" class="boton" download="perfil.json" hidden>Descargar perfil.json</a>
+    </div>
+    <p id="msgPerfil" role="status"></p>
+    <pre id="vistaJson" hidden></pre>
+  </section>
+
+  <section class="panel">
+    <h2>Consultar compañeros</h2>
+    <label>URL del perfil.json de un compañero
+      <input id="url" type="url" placeholder="https://usuario.github.io/conecta/perfil.json"></label>
+    <div class="fila"><button id="btnConsultar">Consultar perfil</button><button id="btnLimpiar" class="sec">Limpiar resultados</button></div>
+    <p id="msgConsulta" role="status"></p>
+    <ul id="diagnostico" class="diagnostico" aria-label="Diagnóstico de la consulta"></ul>
+  </section>
+
+  <section id="resultados" aria-live="polite"></section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

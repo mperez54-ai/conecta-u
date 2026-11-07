@@ -1,0 +1,301 @@
+/* =========================================================
+   CONECTA U - Estilos
+   Está dividido en secciones con comentarios para que
+   sea fácil encontrar y cambiar cada cosa.
+   ========================================================= */
+
+
+/* ---------- 1. COLORES (cámbialos aquí y se actualiza todo) ---------- */
+:root {
+  --color-fondo: #f6f7fb;        /* fondo de la página */
+  --color-texto: #14213d;        /* texto principal y banner superior */
+  --color-texto-suave: #5b6478;  /* textos secundarios (gris) */
+  --color-principal: #2a4fd6;    /* botones y porcentaje (azul) */
+  --color-acento: #c8f169;       /* barra de compatibilidad y gustos en común (lima) */
+  --color-borde: #d5d9e6;        /* líneas de cajas y campos */
+  --color-error: #b3261e;        /* mensajes de error (rojo) */
+  --color-exito: #1b6b3a;        /* mensajes de éxito (verde) */
+  --color-blanco: #ffffff;
+}
+
+
+/* ---------- 2. BASE (aplica a toda la página) ---------- */
+* {
+  box-sizing: border-box;  /* el padding no agranda las cajas */
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+/* Oculta cualquier elemento que tenga el atributo "hidden" */
+[hidden] {
+  display: none !important;
+}
+
+
+/* ---------- 3. ENCABEZADO (banner azul oscuro de arriba) ---------- */
+header {
+  background: var(--color-texto);
+  color: var(--color-blanco);
+  padding: 2rem 1.25rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+/* Rayita lima debajo del título */
+header h1::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 0.35rem;
+  background: var(--color-acento);
+  margin-top: 0.4rem;
+}
+
+header p {
+  margin: 0.6rem 0 0;
+  max-width: 60ch;
+  color: #cfd6ea;
+}
+
+
+/* ---------- 4. CONTENEDOR PRINCIPAL ---------- */
+main {
+  max-width: 960px;     /* ancho máximo del contenido */
+  margin: 0 auto;       /* lo centra */
+  padding: 1.25rem;
+  display: grid;
+  gap: 1.25rem;         /* espacio entre las secciones */
+}
+
+/* Cajas blancas: "Mi perfil" y "Consultar compañeros" */
+.panel {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.25rem;
+}
+
+
+/* ---------- 5. FORMULARIO ---------- */
+label {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-weight: bold;
+}
+
+label small {
+  font-weight: normal;
+  color: var(--color-texto-suave);
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.6rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font: inherit;
+}
+
+/* Casilla "Usar proxy CORS" */
+label.check {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+label.check input {
+  display: inline;
+  width: auto;
+  margin-right: 0.4rem;
+}
+
+/* Contorno visible al navegar con el teclado */
+input:focus,
+textarea:focus,
+button:focus-visible,
+.boton:focus-visible {
+  outline: 3px solid var(--color-principal);
+  outline-offset: 1px;
+}
+
+
+/* ---------- 6. BOTONES ---------- */
+.fila {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;  /* en celular los botones pasan a la línea de abajo */
+}
+
+button,
+.boton {
+  background: var(--color-principal);
+  color: var(--color-blanco);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.65rem 1.1rem;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Botón secundario (blanco): "Limpiar resultados" */
+button.sec {
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+
+/* ---------- 7. MENSAJES Y VISTA DEL JSON ---------- */
+.error { color: var(--color-error); }
+.ok    { color: var(--color-exito); }
+
+pre {
+  background: var(--color-fondo);
+  padding: 0.8rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+
+/* ---------- 8. TARJETAS DE RESULTADOS (perfiles de compañeros) ---------- */
+/* Cuadrícula: tantas columnas como quepan, mínimo 280px cada una */
+#resultados {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.tarjeta {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 1.1rem;
+}
+
+.tarjeta h3 {
+  margin: 0;
+}
+
+.tarjeta .desc {
+  margin: 0.3rem 0 0.8rem;
+  color: var(--color-texto-suave);
+}
+
+/* Porcentaje grande, ej: "60% compatible" */
+.score {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--color-principal);
+  line-height: 1;
+}
+
+/* Barra de compatibilidad: .barra es el fondo, la <span> es el relleno */
+.barra {
+  height: 0.6rem;
+  background: var(--color-fondo);
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.barra span {
+  display: block;
+  height: 100%;
+  background: var(--color-acento);
+  transition: width 0.6s;
+}
+
+/* Lista de gustos como "etiquetas" */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0.3rem 0 0.8rem;
+  list-style: none;
+}
+
+.chips li {
+  padding: 0.15rem 0.6rem;
+  border-radius: 99px;
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  font-size: 0.85rem;
+}
+
+/* Gustos que ambos tienen en común (resaltados en lima) */
+.chips li.comun {
+  background: var(--color-acento);
+  border-color: var(--color-acento);
+  font-weight: bold;
+}
+
+/* URL de donde se leyó el perfil */
+.origen {
+  font-size: 0.75rem;
+  color: var(--color-texto-suave);
+  word-break: break-all;
+}
+
+
+/* ---------- 9. ACCESIBILIDAD ---------- */
+/* Quita la animación a quien la tiene desactivada en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  .barra span { transition: none; }
+}
+
+
+/* ---------- 10. CAMPOS DEL PERFIL Y DATOS RECIBIDOS ---------- */
+/* Título de cada grupo dentro de la tarjeta (ej: "musica", "comida") */
+.campo-nombre {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--color-texto-suave);
+  text-transform: capitalize;
+}
+
+/* Desplegable con el JSON tal como llegó */
+.tarjeta details {
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta summary {
+  cursor: pointer;
+  color: var(--color-principal);
+}
+
+
+/* ---------- 11. DIAGNÓSTICO DE LA CONSULTA ---------- */
+/* Lista que muestra qué pasó con cada forma de consultar */
+.diagnostico {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.diagnostico li {
+  padding: 0.2rem 0;
+}
